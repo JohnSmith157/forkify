@@ -3,6 +3,7 @@
 // API UIOGFHIBGNHà"I3°0U47YH
 
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView'
 import{ elements, renderLoader, clearLoader } from './views/base';
 
@@ -15,6 +16,9 @@ import{ elements, renderLoader, clearLoader } from './views/base';
 
 const state = {};
 
+/**
+ * SEARCH CONTROLLER
+ */
 const controlSearch = async () => {
     // 1) Get query from view
     const query = searchView.getInput(); //TODO
@@ -53,3 +57,9 @@ elements.searchResPages.addEventListener('click', e => {
         searchView.renderResults(state.search.result, goToPage);
     }
 });
+
+/**
+ * RECIPE CONTROLLER
+ */
+const r = new Recipe();
+r.getRecipe();
