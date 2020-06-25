@@ -71,7 +71,7 @@ const createButton = (page, type) => `
     </button>
 `;
 
-const renderButtons = (pqge, numResults, resPerPage) => {
+const renderButtons = (page, numResults, resPerPage) => {
     const pages = Math.ceil(numResults / resPerPage);
 
     let button;
