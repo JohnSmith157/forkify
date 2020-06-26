@@ -9,6 +9,7 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import{ elements, renderLoader, clearLoader } from './views/base';
 import Likes from './models/Likes';
 
@@ -102,7 +103,10 @@ const controlRecipe = () => {
 
             // Render recipe
             clearLoader();
-            recipeView.renderRecipe();
+            recipeView.renderRecipe(
+                state.recipe,
+                state.likes.isLiked(id)    
+            );
         } catch (err) {
             alert('Error processing recipe!');
         }
@@ -170,9 +174,11 @@ const controlLike = () => {
             state.recipe.img
         );
         // Toggle the like button
+        likesView.toggleLikeBtn(true);
 
         // Add like to UI list
-        console.log(state.likes);
+        likesView.renderLike(newLike);
+        
 
     // User HAS liked current recipe
     } else {
@@ -180,11 +186,13 @@ const controlLike = () => {
         state.likes.deleteLike(currentID);
 
         // Toggle the like button
+        likesView.toggleLikeBtn(false);
 
         // Remove like from UI list
-        console.log(state.likes);
+        likesView.deleteLike(currentID);
 
     }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 
