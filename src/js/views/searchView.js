@@ -33,7 +33,7 @@ export const limitRecipeTitle = (title, limit = 17) => {
     if(title.length > limit) {
         title.split(' ').reduce((acc, cur) => {
             if (acc + cur.length <= limit) {
-                new.Title.push(cur);
+                new.title.push(cur);
             }
             return acc + cur.length;
         }, 0);

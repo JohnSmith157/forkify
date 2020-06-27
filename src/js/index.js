@@ -11,7 +11,7 @@ import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import{ elements, renderLoader, clearLoader } from './views/base';
-import Likes from './models/Likes';
+
 
 /** Global state of the app
  * - Search object
@@ -76,10 +76,10 @@ elements.searchResPages.addEventListener('click', e => {
 
 /* const r = new Recipe();
 r.getRecipe(); */
-const controlRecipe = () => {
+const controlRecipe = async () => {
     // Get ID from url
     const id = window.location.hash.replace('#', '');
-    console.log(id);
+    
 
     if (id) {
         // Prepare UI for changes
